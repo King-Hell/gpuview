@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <title>gpuview</title>
+    <title>DL4NLP</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" 
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" 
@@ -17,7 +17,7 @@
 
 <body class="fixed-nav sticky-footer bg-dark" id="page-top">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-        <a class="navbar-brand" href="index.html">gpuview dashboard</a>
+        <a class="navbar-brand" href="index.html">DL4NLP GPU Server Dashboard</a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" 
             data-target="#navbarResponsive"
             aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,15 +53,15 @@
                             <span class="float-left">
                                 <span class="text-nowrap">
                                 <i class="fa fa-thermometer-three-quarters" aria-hidden="true"></i>
-                                Temp. {{ gpu.get('temperature.gpu', '-') }}&#8451; 
+                                温度 {{ gpu.get('temperature.gpu', '-') }}&#8451; 
                                 </span> |
                                 <span class="text-nowrap">
                                 <i class="fa fa-microchip" aria-hidden="true"></i>
-                                Mem. {{ gpu.get('memory', '-') }}% 
+                                显存 {{ gpu.get('memory', '-') }}% 
                                 </span> |
                                 <span class="text-nowrap">
                                 <i class="fa fa-cogs" aria-hidden="true"></i>
-                                Util. {{ gpu.get('utilization.gpu', '-') }}%
+                                使用率 {{ gpu.get('utilization.gpu', '-') }}%
                                 </span> |
                                 <span class="text-nowrap">
                                 <i class="fa fa-users" aria-hidden="true"></i>
@@ -77,19 +77,19 @@
             <!-- GPU Stat Card-->
             <div class="card mb-3">
                 <div class="card-header">
-                    <i class="fa fa-table"></i> All Hosts and GPUs</div>
+                    <i class="fa fa-table"></i> 服务器列表</div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th scope="col">Host</th>
+                                    <th scope="col">主机</th>
                                     <th scope="col">GPU</th>
-                                    <th scope="col">Temp.</th>
-                                    <th scope="col">Util.</th>
-                                    <th scope="col">Memory Use/Cap</th>
-                                    <th scope="col">Power Use/Cap</th>
-                                    <th scope="col">User Processes</th>
+                                    <th scope="col">温度</th>
+                                    <th scope="col">使用率</th>
+                                    <th scope="col">显存</th>
+                                    <th scope="col">功率</th>
+                                    <th scope="col">用户进程</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -100,8 +100,8 @@
                                     <td> [{{ gpu.get('index', '') }}] {{ gpu.get('name', '-') }} </td>
                                     <td> {{ gpu.get('temperature.gpu', '-') }}&#8451; </td>
                                     <td> {{ gpu.get('utilization.gpu', '-') }}% </td>
-                                    <td> {{ gpu.get('memory', '-') }}% ({{ gpu.get('memory.used', '') }}/{{ gpu.get('memory.total', '-') }}) </td>
-                                    <td> {{ gpu.get('power.draw', '-') }} / {{ gpu.get('enforced.power.limit', '-') }} </td>
+                                    <td> {{ gpu.get('memory', '-') }}% ({{ gpu.get('memory.used', '') }}MB/{{ gpu.get('memory.total', '-') }}MB) </td>
+                                    <td> {{ gpu.get('power.draw', '-') }}W/ {{ gpu.get('enforced.power.limit', '-') }}W </td>
                                     <td> {{ gpu.get('user_processes', '-') }} </td>
                                 </tr>
                                 % end
@@ -115,7 +115,7 @@
             <footer class="sticky-footer">
                 <div class="container">
                     <div class="text-center text-white">
-                        <small><a href='https://github.com/fgaim/gpuview'>gpuview</a> © 2018</small>
+                        <small><a href='http://59.77.7.40'>DL4NLP</a> © XMU</small>
                     </div>
                 </div>
             </footer>
