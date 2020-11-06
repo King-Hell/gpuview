@@ -10,8 +10,10 @@ Web API of gpuview.
 import os
 import json
 from datetime import datetime
+import time
 
 from bottle import Bottle, TEMPLATE_PATH, template, response
+
 
 from . import utils
 from . import core
@@ -23,13 +25,24 @@ abs_views_path = os.path.join(abs_path, 'views')
 TEMPLATE_PATH.insert(0, abs_views_path)
 
 EXCLUDE_SELF = False  # Do not report to `/gpustat` calls.
-
+# last update time
+last_time=None
+last_web=None
 
 @app.route('/')
 def index():
+    t = time.time()
+    if t-last_time>60:
+        update()
+    return last_web
+        
+
+def update():
+    global last_web,last_time
     gpustats = core.all_gpustats()
-    now = datetime.now().strftime('Updated at %Y-%m-%d %H:%M:%S')
-    return template('index', gpustats=gpustats, update_time=now)
+    now = datetime.now().strftime('更新于 %Y-%m-%d %H:%M:%S')
+    last_time=time.time()
+    last_web=template('index', gpustats=gpustats, update_time=now)
 
 
 @app.route('/gpustat', methods=['GET'])
