@@ -75,6 +75,7 @@ def main():
         global EXCLUDE_SELF
         EXCLUDE_SELF = args.exclude_self
         app.run(host=args.host, port=args.port, debug=args.debug)
+        update()
     elif 'service' == args.action:
         core.install_service(host=args.host,
                              port=args.port,
