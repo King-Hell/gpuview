@@ -178,3 +178,7 @@ def install_service(host=None, port=None,
         arg += '--exclude-self '
     script = os.path.join(ABS_PATH, 'service.sh')
     subprocess.call('{} "{}"'.format(script, arg.strip()), shell=True)
+
+def update():
+    script = os.path.join(ABS_PATH, 'update.sh')
+    

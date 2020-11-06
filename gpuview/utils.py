@@ -64,5 +64,8 @@ def arg_parser():
 
     subparsers.add_parser("service", parents=[base_parser],
                           help="Install gpuview as a service")
+    
+    # Add update
+    subparsers.add_parser("update",help="Update gpuview")
 
     return parser

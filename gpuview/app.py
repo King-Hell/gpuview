@@ -73,6 +73,8 @@ def main():
         core.remove_host(args.url)
     elif 'hosts' == args.action:
         core.print_hosts()
+    elif 'update' == args.action:
+        core.update()
     else:
         parser.print_help()
 
